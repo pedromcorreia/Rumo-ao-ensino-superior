@@ -19,6 +19,9 @@ defmodule RaemWeb.Router do
     get "/", PageController, :index
     resources "/users", UserController
     resources "/idds", IddController
+    resources "/enades", EnadeController
+    resources "/cpcs", CpcController
+    resources "/igcs", IgcController
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,119 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :cod_grupo, class: "control-label" %>
+    <%= number_input f, :cod_grupo, class: "form-control" %>
+    <%= error_tag f, :cod_grupo %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :cod_ies, class: "control-label" %>
+    <%= number_input f, :cod_ies, class: "form-control" %>
+    <%= error_tag f, :cod_ies %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :cod_municipio, class: "control-label" %>
+    <%= number_input f, :cod_municipio, class: "form-control" %>
+    <%= error_tag f, :cod_municipio %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :ano, class: "control-label" %>
+    <%= date_select f, :ano, class: "form-control" %>
+    <%= error_tag f, :ano %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :area, class: "control-label" %>
+    <%= text_input f, :area, class: "form-control" %>
+    <%= error_tag f, :area %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :sub_area, class: "control-label" %>
+    <%= text_input f, :sub_area, class: "form-control" %>
+    <%= error_tag f, :sub_area %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :nome_ies, class: "control-label" %>
+    <%= text_input f, :nome_ies, class: "form-control" %>
+    <%= error_tag f, :nome_ies %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :sigla_ies, class: "control-label" %>
+    <%= text_input f, :sigla_ies, class: "form-control" %>
+    <%= error_tag f, :sigla_ies %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :municipio, class: "control-label" %>
+    <%= text_input f, :municipio, class: "form-control" %>
+    <%= error_tag f, :municipio %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :uf, class: "control-label" %>
+    <%= text_input f, :uf, class: "form-control" %>
+    <%= error_tag f, :uf %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :media_fg_ing, class: "control-label" %>
+    <%= number_input f, :media_fg_ing, step: "any", class: "form-control" %>
+    <%= error_tag f, :media_fg_ing %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :media_fg_cong, class: "control-label" %>
+    <%= number_input f, :media_fg_cong, step: "any", class: "form-control" %>
+    <%= error_tag f, :media_fg_cong %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :media_ce_ing, class: "control-label" %>
+    <%= number_input f, :media_ce_ing, step: "any", class: "form-control" %>
+    <%= error_tag f, :media_ce_ing %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :media_ce_conc, class: "control-label" %>
+    <%= number_input f, :media_ce_conc, step: "any", class: "form-control" %>
+    <%= error_tag f, :media_ce_conc %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :media_geral_ing, class: "control-label" %>
+    <%= number_input f, :media_geral_ing, step: "any", class: "form-control" %>
+    <%= error_tag f, :media_geral_ing %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :media_geral_conc, class: "control-label" %>
+    <%= number_input f, :media_geral_conc, step: "any", class: "form-control" %>
+    <%= error_tag f, :media_geral_conc %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :conceito_enade, class: "control-label" %>
+    <%= number_input f, :conceito_enade, class: "form-control" %>
+    <%= error_tag f, :conceito_enade %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :conceito_idd, class: "control-label" %>
+    <%= number_input f, :conceito_idd, class: "form-control" %>
+    <%= error_tag f, :conceito_idd %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
