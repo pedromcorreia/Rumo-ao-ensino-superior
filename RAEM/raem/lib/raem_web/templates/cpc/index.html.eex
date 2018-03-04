@@ -1,0 +1,102 @@
+<h2>Listing Cpcs</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Ano</th>
+      <th>Cod area</th>
+      <th>Area enquadramento</th>
+      <th>Cod ies</th>
+      <th>Nome ies</th>
+      <th>Sigla ies</th>
+      <th>Cat administrativa</th>
+      <th>Org academica</th>
+      <th>Cod municipio</th>
+      <th>Mun curso</th>
+      <th>Uf curso</th>
+      <th>Regiao curso</th>
+      <th>Num cursos unidade</th>
+      <th>Concluintes inscritos</th>
+      <th>Concluintes participantes</th>
+      <th>Nota bruta fg</th>
+      <th>Nota bruta ce</th>
+      <th>Nota bruta geral</th>
+      <th>Nota continua enade</th>
+      <th>Nota bruta odp</th>
+      <th>Nota padronizada odp</th>
+      <th>Nota padronizada iif</th>
+      <th>Nota bruta oaf</th>
+      <th>Nota padronizada oaf</th>
+      <th>Concluintes participantes enem</th>
+      <th>Percentual concluintes enem</th>
+      <th>Nota bruta idd</th>
+      <th>Nota padronizada idd</th>
+      <th>Num docentes</th>
+      <th>Num matriculas</th>
+      <th>Nota bruta mestres</th>
+      <th>Nota padronizada mestres</th>
+      <th>Nota bruta doutores</th>
+      <th>Nota padronizada doutores</th>
+      <th>Nota bruta regime trabalho</th>
+      <th>Nota padronizada regime trabalho</th>
+      <th>Cpc continuo</th>
+      <th>Cpc faixa</th>
+      <th>Observacao</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for cpc <- @cpcs do %>
+    <tr>
+      <td><%= cpc.ano %></td>
+      <td><%= cpc.cod_area %></td>
+      <td><%= cpc.area_enquadramento %></td>
+      <td><%= cpc.cod_ies %></td>
+      <td><%= cpc.nome_ies %></td>
+      <td><%= cpc.sigla_ies %></td>
+      <td><%= cpc.cat_administrativa %></td>
+      <td><%= cpc.org_academica %></td>
+      <td><%= cpc.cod_municipio %></td>
+      <td><%= cpc.mun_curso %></td>
+      <td><%= cpc.uf_curso %></td>
+      <td><%= cpc.regiao_curso %></td>
+      <td><%= cpc.num_cursos_unidade %></td>
+      <td><%= cpc.concluintes_inscritos %></td>
+      <td><%= cpc.concluintes_participantes %></td>
+      <td><%= cpc.nota_bruta_fg %></td>
+      <td><%= cpc.nota_bruta_ce %></td>
+      <td><%= cpc.nota_bruta_geral %></td>
+      <td><%= cpc.nota_continua_enade %></td>
+      <td><%= cpc.nota_bruta_odp %></td>
+      <td><%= cpc.nota_padronizada_odp %></td>
+      <td><%= cpc.nota_padronizada_iif %></td>
+      <td><%= cpc.nota_bruta_oaf %></td>
+      <td><%= cpc.nota_padronizada_oaf %></td>
+      <td><%= cpc.concluintes_participantes_enem %></td>
+      <td><%= cpc.percentual_concluintes_enem %></td>
+      <td><%= cpc.nota_bruta_idd %></td>
+      <td><%= cpc.nota_padronizada_idd %></td>
+      <td><%= cpc.num_docentes %></td>
+      <td><%= cpc.num_matriculas %></td>
+      <td><%= cpc.nota_bruta_mestres %></td>
+      <td><%= cpc.nota_padronizada_mestres %></td>
+      <td><%= cpc.nota_bruta_doutores %></td>
+      <td><%= cpc.nota_padronizada_doutores %></td>
+      <td><%= cpc.nota_bruta_regime_trabalho %></td>
+      <td><%= cpc.nota_padronizada_regime_trabalho %></td>
+      <td><%= cpc.cpc_continuo %></td>
+      <td><%= cpc.cpc_faixa %></td>
+      <td><%= cpc.observacao %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: cpc_path(@conn, :show, cpc), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: cpc_path(@conn, :edit, cpc), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: cpc_path(@conn, :delete, cpc), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Cpc", to: cpc_path(@conn, :new) %></span>
