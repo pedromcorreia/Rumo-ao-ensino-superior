@@ -1,0 +1,108 @@
+<h2>Show Idd</h2>
+
+<ul>
+
+  <li>
+    <strong>Ano:</strong>
+    <%= @idd.ano %>
+  </li>
+
+  <li>
+    <strong>Cod ies:</strong>
+    <%= @idd.cod_ies %>
+  </li>
+
+  <li>
+    <strong>Nome ies:</strong>
+    <%= @idd.nome_ies %>
+  </li>
+
+  <li>
+    <strong>Sigla ies:</strong>
+    <%= @idd.sigla_ies %>
+  </li>
+
+  <li>
+    <strong>Org academica:</strong>
+    <%= @idd.org_academica %>
+  </li>
+
+  <li>
+    <strong>Cat administrativa:</strong>
+    <%= @idd.cat_administrativa %>
+  </li>
+
+  <li>
+    <strong>Cod curso:</strong>
+    <%= @idd.cod_curso %>
+  </li>
+
+  <li>
+    <strong>Cod area:</strong>
+    <%= @idd.cod_area %>
+  </li>
+
+  <li>
+    <strong>Area enquadramento:</strong>
+    <%= @idd.area_enquadramento %>
+  </li>
+
+  <li>
+    <strong>Modalidade ensino:</strong>
+    <%= @idd.modalidade_ensino %>
+  </li>
+
+  <li>
+    <strong>Cod municipio:</strong>
+    <%= @idd.cod_municipio %>
+  </li>
+
+  <li>
+    <strong>Municipio curso:</strong>
+    <%= @idd.municipio_curso %>
+  </li>
+
+  <li>
+    <strong>Sigla uf:</strong>
+    <%= @idd.sigla_uf %>
+  </li>
+
+  <li>
+    <strong>Concluintes inscritos:</strong>
+    <%= @idd.concluintes_inscritos %>
+  </li>
+
+  <li>
+    <strong>Concluintes participantes:</strong>
+    <%= @idd.concluintes_participantes %>
+  </li>
+
+  <li>
+    <strong>Concluintes participantes enem:</strong>
+    <%= @idd.concluintes_participantes_enem %>
+  </li>
+
+  <li>
+    <strong>Percentual concluintes participantes enem:</strong>
+    <%= @idd.percentual_concluintes_participantes_enem %>
+  </li>
+
+  <li>
+    <strong>Nota bruta idd:</strong>
+    <%= @idd.nota_bruta_idd %>
+  </li>
+
+  <li>
+    <strong>Nota padronizada idd:</strong>
+    <%= @idd.nota_padronizada_idd %>
+  </li>
+
+  <li>
+    <strong>Idd faixa:</strong>
+    <%= @idd.idd_faixa %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: idd_path(@conn, :edit, @idd) %></span>
+<span><%= link "Back", to: idd_path(@conn, :index) %></span>
