@@ -18,6 +18,7 @@ defmodule RaemWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+    resources "/enades", EnadeController
     resources "/cpcs", CpcController
     resources "/igcs", IgcController
   end
