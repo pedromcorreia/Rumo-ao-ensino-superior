@@ -12,7 +12,9 @@ defmodule Seed.Miner do
         list
         |> Enum.map(fn(line) ->
           {:ok, line_map} = line
-          IO.inspect(line_map)
+          line_map
+          |> Stream.map(&(&1))
+          |> IO.inspect()
         end)
       :enade ->
         IO.inspect(%Enade{}.__struct__.__schema__(:fields))
