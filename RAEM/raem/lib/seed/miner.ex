@@ -8,20 +8,30 @@ defmodule Seed.Miner do
   def csv_list_to_map(list, schema_csv) do
     case schema_csv do
       :cpc ->
-        cpc_schema = (%Cpc{}.__struct__.__schema__(:fields))
+        cpc_schema = %Cpc{}.__struct__.__schema__(:fields)
+
+        header = List.first(list)
+
         list
-        |> Enum.map(fn(line) ->
-          {:ok, line_map} = line
-          line_map
-          |> Stream.map(&(&1))
-          |> IO.inspect()
+        |> List.delete_at(0)
+        |> Enum.all?(fn(line) ->
+          line
+          |> Enum.each(fn(el) ->
+            IO.puts el
+            |> concat_header_result(header)
+          end)
         end)
       :enade ->
-        IO.inspect(%Enade{}.__struct__.__schema__(:fields))
+        enade_schema = %Enade{}.__struct__.__schema__(:fields)
       :idd ->
-        IO.inspect(%Idd{}.__struct__.__schema__(:fields))
+        idd_schema = %Idd{}.__struct__.__schema__(:fields)
       :igc ->
-        IO.inspect(%Igc{}.__struct__.__schema__(:fields))
+        igc_schema = %Igc{}.__struct__.__schema__(:fields)
     end
+  end
+
+  defp concat_header_result(list_result, header) do
+    IO.inspect(list_result, label: "list")
+    IO.inspect(header, label: "header")
   end
 end
