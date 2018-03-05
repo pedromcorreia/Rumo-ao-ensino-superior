@@ -5,10 +5,21 @@ defmodule Seed.Miner do
   alias Raem.Igcs.Igc
   use Ecto.Schema
 
-  def csv_list_to_map(list) do
-    IO.inspect(%Cpc{}.__struct__.__schema__(:fields))
-    IO.inspect(%Enade{}.__struct__.__schema__(:fields))
-    IO.inspect(%Idd{}.__struct__.__schema__(:fields))
-    IO.inspect(%Igc{}.__struct__.__schema__(:fields))
+  def csv_list_to_map(list, schema_csv) do
+    case schema_csv do
+      :cpc ->
+        cpc_schema = (%Cpc{}.__struct__.__schema__(:fields))
+        list
+        |> Enum.map(fn(line) ->
+          {:ok, line_map} = line
+          IO.inspect(line_map)
+        end)
+      :enade ->
+        IO.inspect(%Enade{}.__struct__.__schema__(:fields))
+      :idd ->
+        IO.inspect(%Idd{}.__struct__.__schema__(:fields))
+      :igc ->
+        IO.inspect(%Igc{}.__struct__.__schema__(:fields))
+    end
   end
 end

@@ -22,9 +22,8 @@ defmodule Mix.Tasks.Raem.Seed do
     |> Stream.map(&(&1))
     |> CSV.decode(separator: ?,)
     |> Enum.drop(1)
-    |> Enum.take(1)
-    |> IO.inspect
-    |> Miner.csv_list_to_map()
+    |> Enum.take(2)
+    |> Miner.csv_list_to_map(:cpc)
   end
 
   def seed(:prod) do
