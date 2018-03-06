@@ -16,9 +16,9 @@ defmodule Mix.Tasks.Raem.Seed do
 
     unless opts[:base] do
       Mix.raise("""
-You must give us an org id to insert the contracts. Like this:
-mix raem.seed --base=enade
-""")
+      You must give us an org id to insert the contracts. Like this:
+      mix raem.seed --base=enade
+      """)
     end
 
     Mix.Task.run "app.start", []
@@ -29,7 +29,7 @@ mix raem.seed --base=enade
     |> Path.expand(__DIR__)
     |> File.stream!
     |> Stream.map(&(&1))
-    |> CSV.decode!(separator: ?,)
+    |> CSV.decode!(header: true)
     |> Enum.take(2)
     |> Miner.csv_list_to_map(ctx)
 

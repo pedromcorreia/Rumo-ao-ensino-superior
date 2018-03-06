@@ -6,21 +6,19 @@ defmodule Seed.Miner do
   use Ecto.Schema
 
   def csv_list_to_map(list, schema_csv) do
+      header = List.first(list)
+      list
+      |> List.delete_at(0)
+      |> Enum.all?(fn(line) ->
+        header
+        |> Enum.zip(line)
+      end)
+  end
+
+  def get_schema_csv(schema_csv) do
     case schema_csv do
       :cpc ->
         cpc_schema = %Cpc{}.__struct__.__schema__(:fields)
-
-        header = List.first(list)
-
-        list
-        |> List.delete_at(0)
-        |> Enum.all?(fn(line) ->
-          line
-          |> Enum.each(fn(el) ->
-            IO.puts el
-            |> concat_header_result(header)
-          end)
-        end)
       :enade ->
         enade_schema = %Enade{}.__struct__.__schema__(:fields)
       :idd ->
@@ -28,10 +26,5 @@ defmodule Seed.Miner do
       :igc ->
         igc_schema = %Igc{}.__struct__.__schema__(:fields)
     end
-  end
-
-  defp concat_header_result(list_result, header) do
-    IO.inspect(list_result, label: "list")
-    IO.inspect(header, label: "header")
   end
 end
