@@ -5,14 +5,27 @@ defmodule Seed.Miner do
   alias Raem.Igcs.Igc
   use Ecto.Schema
 
-  def csv_list_to_map(list, schema_csv) do
-      header = List.first(list)
-      list
-      |> List.delete_at(0)
-      |> Enum.all?(fn(line) ->
-        header
-        |> Enum.zip(line)
-      end)
+  def read_files(file_path) do
+    file_path
+    |> Enum.map(fn(file) ->
+      file
+      |> Path.expand()
+      |> File.stream!
+      |> Stream.map(&(&1))
+      |> CSV.decode!(header: true)
+      |> Enum.take(2)
+      |> csv_list_to_map()
+    end)
+  end
+
+  defp csv_list_to_map(list) do
+    header = List.first(list)
+    list
+    |> List.delete_at(0)
+    |> Enum.all?(fn(line) ->
+      header
+      |> Enum.zip(line)
+    end)
   end
 
   def get_schema_csv(schema_csv) do

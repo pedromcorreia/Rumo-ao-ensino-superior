@@ -10,28 +10,9 @@ defmodule Mix.Tasks.Raem.Seed do
   import Ecto
 
   @doc false
-  def run(args) do
-
-    {opts, _, _} = OptionParser.parse(args, switches: [org: :integer, pool_size: :integer])
-
-    unless opts[:base] do
-      Mix.raise("""
-      You must give us an org id to insert the contracts. Like this:
-      mix raem.seed --base=enade
-      """)
-    end
-
-    Mix.Task.run "app.start", []
-
-    ctx = String.to_atom(opts[:base])
-
-    ("~/Documents/Capes/CPC/2008_cpc.csv")
-    |> Path.expand(__DIR__)
-    |> File.stream!
-    |> Stream.map(&(&1))
-    |> CSV.decode!(header: true)
-    |> Enum.take(2)
-    |> Miner.csv_list_to_map(ctx)
-
+  def run(_args) do
+    "resources/**/*.{csv}"
+    |> Path.wildcard
+    |> Miner.read_files
   end
 end
