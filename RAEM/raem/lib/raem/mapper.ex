@@ -1,4 +1,4 @@
-defmodule Seed.Mapper do
+defmodule Raem.Mapper do
   @moduledoc """
   This module has the functions to map the csv fields to database
   """

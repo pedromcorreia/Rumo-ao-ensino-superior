@@ -1,4 +1,4 @@
-defmodule Seed.Miner do
+defmodule Raem.Parser do
   alias Raem.Cpcs.Cpc
   alias Raem.Enades.Enade
   alias Raem.Idds.Idd
@@ -22,8 +22,8 @@ defmodule Seed.Miner do
     header = List.first(list)
     list
     |> List.delete_at(0)
-    |> Enum.all?(fn(line) ->
-         Enum.zip(header, line)
+      |> Enum.map(fn(line) ->
+      Enum.zip(header, line)
     end)
   end
 
