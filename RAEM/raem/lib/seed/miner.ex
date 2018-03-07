@@ -23,8 +23,7 @@ defmodule Seed.Miner do
     list
     |> List.delete_at(0)
     |> Enum.all?(fn(line) ->
-      header
-      |> Enum.zip(line)
+         Enum.zip(header, line)
     end)
   end
 
