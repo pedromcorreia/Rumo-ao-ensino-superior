@@ -8,7 +8,7 @@ defmodule Mix.Tasks.Seed do
 
   @doc false
   def run(_args) do
-    "resources/**/*.{csv}"
+    "resources/IDD/*.{csv}"
     |> Path.wildcard
     |> Parser.read_files
   end
