@@ -50,11 +50,8 @@
       <td class="text-right">
         <span><%= link "Show", to: enade_path(@conn, :show, enade), class: "btn btn-default btn-xs" %></span>
         <span><%= link "Edit", to: enade_path(@conn, :edit, enade), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: enade_path(@conn, :delete, enade), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Enade", to: enade_path(@conn, :new) %></span>
