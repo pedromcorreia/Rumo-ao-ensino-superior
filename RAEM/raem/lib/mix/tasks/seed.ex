@@ -3,6 +3,7 @@ defmodule Mix.Tasks.Seed do
 
   use Mix.Task
   alias Raem.Parser
+  alias Raem.Idds.Idd
 
   import Ecto
 
@@ -11,6 +12,14 @@ defmodule Mix.Tasks.Seed do
     "resources/IDD/*.{csv}"
     |> Path.wildcard
     |> Parser.read_files
-    |> IO.inspect()
+    |> Enum.map(fn(list_readed) ->
+      list_readed
+      |> Enum.map(fn(file_readed) ->
+        file_readed
+        #|> Idd.create_idd
+      end)
+    end)
+
+    IO.inspect(%Idd{}.__struct__.__schema__(:fields))
   end
 end

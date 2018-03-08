@@ -97,7 +97,7 @@ defmodule Raem.FieldMapped do
         @mappings
         |> Enum.map(fn(mapped) ->
           if(elem(mapped, 1).field == elem(map_data,0)) do
-            %{elem(mapped, 1).field => elem(map_data,1)}
+            Map.put(%{}, elem(mapped, 0), elem(map_data,1))
           end
         end)
         |> Enum.filter(& !is_nil(&1))

@@ -9,7 +9,8 @@ defmodule Raem.Parser do
       |> File.stream!
       |> Stream.map(&(&1))
       |> CSV.decode!(header: true)
-      |> Enum.to_list()
+      #|> Enum.to_list()
+      |> Enum.take(2)
       |> zip_header_and_map()
     end)
   end
