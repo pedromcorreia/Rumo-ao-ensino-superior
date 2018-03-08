@@ -18,10 +18,10 @@ defmodule RaemWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
-    resources "/idds", IddController
-    resources "/enades", EnadeController
-    resources "/cpcs", CpcController
-    resources "/igcs", IgcController
+    resources "/idds", IddController, except: [:delete, :new, :update]
+    resources "/enades", EnadeController, except: [:delete, :new, :update]
+    resources "/cpcs", CpcController, except: [:delete, :new, :update]
+    resources "/igcs", IgcController, except: [:delete, :new, :update]
   end
 
   # Other scopes may use custom stacks.

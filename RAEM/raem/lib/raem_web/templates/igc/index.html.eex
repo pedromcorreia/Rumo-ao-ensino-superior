@@ -50,11 +50,8 @@
       <td class="text-right">
         <span><%= link "Show", to: igc_path(@conn, :show, igc), class: "btn btn-default btn-xs" %></span>
         <span><%= link "Edit", to: igc_path(@conn, :edit, igc), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: igc_path(@conn, :delete, igc), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Igc", to: igc_path(@conn, :new) %></span>

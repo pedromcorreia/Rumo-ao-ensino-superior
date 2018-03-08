@@ -54,11 +54,8 @@
       <td class="text-right">
         <span><%= link "Show", to: idd_path(@conn, :show, idd), class: "btn btn-default btn-xs" %></span>
         <span><%= link "Edit", to: idd_path(@conn, :edit, idd), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: idd_path(@conn, :delete, idd), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Idd", to: idd_path(@conn, :new) %></span>
