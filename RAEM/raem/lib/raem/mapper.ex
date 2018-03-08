@@ -4,8 +4,9 @@ defmodule Raem.Mapper do
   """
   alias Raem.FieldMapped
 
-   def read_mapped_list(data) do
+  def read_mapped_list(data) do
     data
     |> FieldMapped.read_list_field()
+    |> List.flatten
   end
 end

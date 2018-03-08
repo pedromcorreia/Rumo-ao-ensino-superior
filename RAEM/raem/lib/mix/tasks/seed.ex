@@ -11,5 +11,6 @@ defmodule Mix.Tasks.Seed do
     "resources/IDD/*.{csv}"
     |> Path.wildcard
     |> Parser.read_files
+    |> IO.inspect()
   end
 end

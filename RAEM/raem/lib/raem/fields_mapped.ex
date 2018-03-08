@@ -86,28 +86,21 @@ defmodule Raem.FieldMapped do
     }
   }
 
-  def field_mapping(field) do
-    @mappings[field]
-  end
-
   def read_list_field(data) do
+    read_field(data)
+  end
+
+  def read_field(data) do
     data
-    |> Enum.map(fn(map) ->
-      map
-      |> IO.inspect
-      read_field(elem(map, 1), elem(map, 0))
+    |> Enum.map(fn(map_data) ->
+      field_mapped_list =
+        @mappings
+        |> Enum.map(fn(mapped) ->
+          if(elem(mapped, 1).field == elem(map_data,0)) do
+            %{elem(mapped, 1).field => elem(map_data,1)}
+          end
+        end)
+        |> Enum.filter(& !is_nil(&1))
     end)
-  end
-
-  def read_field(data, field, default \\ nil) do
-    mapping = field_mapping(field)
-    IO.inspect(field)
-    IO.inspect(mapping)
-    #    read_mapped_field(data, mapping.field, mapping.type, default)
-  end
-
-  defp read_mapped_field(data, key, type, default)
-  when type in [:string, :raw] do
-    Map.get(data, key, default)
   end
 end
