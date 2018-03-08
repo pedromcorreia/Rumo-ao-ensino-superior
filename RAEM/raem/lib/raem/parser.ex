@@ -6,11 +6,10 @@ defmodule Raem.Parser do
     file_path
     |> Enum.map(fn(file) ->
       file
-      |> Path.expand()
       |> File.stream!
       |> Stream.map(&(&1))
       |> CSV.decode!(header: true)
-      |> Enum.take(2)
+      |> Enum.to_list()
       |> zip_header_and_map()
     end)
   end
