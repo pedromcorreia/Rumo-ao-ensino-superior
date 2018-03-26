@@ -6,7 +6,7 @@ defmodule Mix.Tasks.Seed do
 
   """
   use Mix.Task
-
+  import Mix.Ecto
   alias Raem.Parser
   alias Raem.{Idds, Igcs, Enades, Cpcs}
 
@@ -22,6 +22,9 @@ defmodule Mix.Tasks.Seed do
   """
 
   def run(_args) do
+
+    ensure_started(Raem.Repo, [])
+
     default_dir_name = "resources/"
 
     path = default_dir_name <> "IDD/*.{csv}"
