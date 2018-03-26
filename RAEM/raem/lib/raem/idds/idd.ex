@@ -5,7 +5,7 @@ defmodule Raem.Idds.Idd do
 
 
   schema "idds" do
-    field :ano, :date
+    field :ano, :string
     field :area_enquadramento, :string
     field :cat_administrativa, :string
     field :cod_area, :integer
@@ -34,5 +34,6 @@ defmodule Raem.Idds.Idd do
     idd
     |> cast(attrs, [:ano, :cod_ies, :nome_ies, :sigla_ies, :org_academica, :cat_administrativa, :cod_curso, :cod_area, :area_enquadramento, :modalidade_ensino, :cod_municipio, :municipio_curso, :sigla_uf, :concluintes_inscritos, :concluintes_participantes, :concluintes_participantes_enem, :percentual_concluintes_participantes_enem, :nota_bruta_idd, :nota_padronizada_idd, :idd_faixa])
     |> validate_required([:ano, :cod_ies, :nome_ies, :sigla_ies, :org_academica, :cat_administrativa, :cod_curso, :cod_area, :area_enquadramento, :modalidade_ensino, :cod_municipio, :municipio_curso, :sigla_uf, :concluintes_inscritos, :concluintes_participantes, :concluintes_participantes_enem, :percentual_concluintes_participantes_enem, :nota_bruta_idd, :nota_padronizada_idd, :idd_faixa])
+    |> unique_constraint(:cod_curso)
   end
 end

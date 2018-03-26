@@ -1,8 +1,10 @@
 defmodule Raem.Mappings.Idd do
 
-  def build(%Contract{} = contract) do
-    raw_type = read_field(contract.metadata, :type)
-    {:ok, lat: lat, lng: lng} = get_geolocation(contract)
+  alias Raem.Idds.Idd
+
+  @mappings %{}
+  def build(%Idd{} = idd) do
+    raw_type = read_field(idd.metadata, :type)
     %{
       ano: nil,
       area_enquadramento: nil,
@@ -14,9 +16,7 @@ defmodule Raem.Mappings.Idd do
       concluintes_inscritos: nil,
       concluintes_participantes: nil,
       concluintes_participantes_enem: nil,
-      id: nil,
       idd_faixa: nil,
-      inserted_at: nil,
       modalidade_ensino: nil,
       municipio_curso: nil,
       nome_ies: nil,
@@ -26,42 +26,71 @@ defmodule Raem.Mappings.Idd do
       percentual_concluintes_participantes_enem: nil,
       sigla_ies: nil,
       sigla_uf: nil,
-      updated_at: nil
     }
- end
+  end
 
-  defp get_geolocation(contract) do
-    contract
-    |> Map.get(:metadata, %{})
-    |> full_address()
-    |> Geocoder.get_location_by_address()
-    |> case do
-      {:ok, result} ->
-        %{"lat" => lat, "lng" => lng} =
-          result
-          |> Map.get("geometry", %{})
-          |> Map.get("location", %{"lat" => nil, "lng" => nil})
-
-          {:ok, lat: lat, lng: lng}
-
-      {:error, "ZERO_RESULTS"} ->
-        {:ok, %{no_response: true}}
-
-      {:error, "OVER_QUERY_LIMIT", _message} ->
-        {:ok, %{no_response: true}}
-
-      {:error, reason} ->
-        {:error, reason}
+  def read_field(data, field, default \\ nil) do
+    if Map.has_key?(@mappings, field) do
+      mapping = field
+      read_mapped_field(data, mapping.field, mapping.type, default)
     end
   end
 
-  defp full_address(metadata \\ %{}) do
-    federative_unit = read_field(metadata, :federative_unit)
-    street = read_field(metadata, :street)
-    district = read_field(metadata, :district)
-    city = read_field(metadata, :city)
-    zip_code = read_field(metadata, :zip_code)
-
-    "#{street} - #{district}, #{city} - #{federative_unit}, #{zip_code}"
+  defp read_mapped_field(data, key, type, default)
+  when type in [:string, :raw] do
+    Map.get(data, key, default)
   end
+
+  defp read_mapped_field(data, key, :money_cents, default) do
+    data
+    |> read_mapped_field(key, :float, default)
+    |> Kernel.*(100)
+    |> Float.floor()
+  end
+
+  defp read_mapped_field(data, key, :float, default) do
+    data
+    |> read_mapped_field(key, :string, default || "0")
+    |> Float.parse()
+    |> elem(0)
+  end
+
+  defp read_mapped_field(data, key, :integer, default) do
+    data
+    |> read_mapped_field(key, :string, default || "0")
+    |> Integer.parse()
+    |> elem(0)
+  end
+
+  defp read_mapped_field(data, key, :date, default) do
+    data
+    |> read_mapped_field(key, :string, default)
+    |> parse_date()
+  end
+
+  def parse_date(date) do
+    with date <- String.trim(date),
+         [d, m, y] <- String.split(date, "/"),
+         {day, _} <- Integer.parse(d),
+         month <- month_raw_parse(m),
+         {year, _} <- Integer.parse(y),
+         {:ok, date} <- Date.new(year, month, day) do
+           date
+    else
+      _ -> nil
+         end
+  end
+
+  defp month_raw_parse("Jan"), do: 1
+  defp month_raw_parse("Fev"), do: 2
+  defp month_raw_parse("Mar"), do: 3
+  defp month_raw_parse("Abr"), do: 4
+  defp month_raw_parse("Mai"), do: 5
+  defp month_raw_parse("Jun"), do: 6
+  defp month_raw_parse("Jul"), do: 7
+  defp month_raw_parse("Ago"), do: 8
+  defp month_raw_parse("Set"), do: 9
+  defp month_raw_parse("Out"), do: 10
+  defp month_raw_parse("Nov"), do: 11
+  defp month_raw_parse("Dez"), do: 12
 end

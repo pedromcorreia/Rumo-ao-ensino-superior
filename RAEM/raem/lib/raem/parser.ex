@@ -35,10 +35,23 @@ defmodule Raem.Parser do
     |> List.first()
   end
 
-  def set_struct(path, default_dir \\ "resources/") do
-    path
-    |> Path.dirname
-    |> String.trim_leading(default_dir)
-    |> String.to_atom()
+  def read_field(data, field) do
+    Map.get(data, field)
+  end
+  def read_field(data, field, :float) do
+    result = Float.parse(read_field(data, field))
+    result
+    |> case do
+      :error -> 0.0
+      _ -> elem(result, 0)
+    end
+  end
+  def read_field(data, field, :integer) do
+    result = Integer.parse(read_field(data, field))
+    result
+    |> case do
+      :error -> 0
+      _ -> elem(result, 0)
+    end
   end
 end

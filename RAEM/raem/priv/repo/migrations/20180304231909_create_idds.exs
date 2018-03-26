@@ -3,7 +3,7 @@ defmodule Raem.Repo.Migrations.CreateIdds do
 
   def change do
     create table(:idds) do
-      add :ano, :date
+      add :ano, :string
       add :cod_ies, :integer
       add :nome_ies, :string
       add :sigla_ies, :string
