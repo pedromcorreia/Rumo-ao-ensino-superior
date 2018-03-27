@@ -1,0 +1,14 @@
+<h2>Listing Dashboards</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+ </tbody>
+</table>
+
+<span><%= link "New Dashboard", to: dashboard_path(@conn, :new) %></span>
