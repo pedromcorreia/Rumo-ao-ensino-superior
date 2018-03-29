@@ -1,14 +1,6 @@
-<h2>Listing Dashboards</h2>
+<h2>Procure seu curso</h2>
+<%= form_for @conn, dashboard_path(@conn, :create), [name: :search], fn f -> %>
+  <%= text_input f, :id %>
+  <%= submit "Search" %>
+<% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
- </tbody>
-</table>
-
-<span><%= link "New Dashboard", to: dashboard_path(@conn, :new) %></span>

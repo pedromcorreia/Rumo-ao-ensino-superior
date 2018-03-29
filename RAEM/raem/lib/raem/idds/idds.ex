@@ -13,8 +13,8 @@ defmodule Raem.Idds do
 
   ## Examples
 
-      iex> list_idds()
-      [%Idd{}, ...]
+  iex> list_idds()
+  [%Idd{}, ...]
 
   """
   def list_idds do
@@ -28,11 +28,11 @@ defmodule Raem.Idds do
 
   ## Examples
 
-      iex> get_idd!(123)
-      %Idd{}
+  iex> get_idd!(123)
+  %Idd{}
 
-      iex> get_idd!(456)
-      ** (Ecto.NoResultsError)
+  iex> get_idd!(456)
+  ** (Ecto.NoResultsError)
 
   """
   def get_idd!(id), do: Repo.get!(Idd, id)
@@ -42,11 +42,11 @@ defmodule Raem.Idds do
 
   ## Examples
 
-      iex> create_idd(%{field: value})
-      {:ok, %Idd{}}
+  iex> create_idd(%{field: value})
+  {:ok, %Idd{}}
 
-      iex> create_idd(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
+  iex> create_idd(%{field: bad_value})
+  {:error, %Ecto.Changeset{}}
 
   """
   def create_idd(attrs \\ %{}) do
@@ -60,11 +60,11 @@ defmodule Raem.Idds do
 
   ## Examples
 
-      iex> update_idd(idd, %{field: new_value})
-      {:ok, %Idd{}}
+  iex> update_idd(idd, %{field: new_value})
+  {:ok, %Idd{}}
 
-      iex> update_idd(idd, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
+  iex> update_idd(idd, %{field: bad_value})
+  {:error, %Ecto.Changeset{}}
 
   """
   def update_idd(%Idd{} = idd, attrs) do
@@ -78,11 +78,11 @@ defmodule Raem.Idds do
 
   ## Examples
 
-      iex> delete_idd(idd)
-      {:ok, %Idd{}}
+  iex> delete_idd(idd)
+  {:ok, %Idd{}}
 
-      iex> delete_idd(idd)
-      {:error, %Ecto.Changeset{}}
+  iex> delete_idd(idd)
+  {:error, %Ecto.Changeset{}}
 
   """
   def delete_idd(%Idd{} = idd) do
@@ -94,11 +94,27 @@ defmodule Raem.Idds do
 
   ## Examples
 
-      iex> change_idd(idd)
-      %Ecto.Changeset{source: %Idd{}}
+  iex> change_idd(idd)
+  %Ecto.Changeset{source: %Idd{}}
 
   """
   def change_idd(%Idd{} = idd) do
     Idd.changeset(idd, %{})
   end
+
+  @doc """
+  Returns an list for idd by area_enquadramento.
+
+  ## Examples
+
+  iex> change_idd(%Idd{area_enquadramento: area_enquadramento} = idd)
+  [%Idd{}, ...]
+
+  """
+  def get_by!(params) do
+    [area_enquadramento: area_enquadramento_param] = params
+    area_enquadramento_param = String.upcase(area_enquadramento_param)
+    Repo.get_by!(Idd, area_enquadramento: area_enquadramento_param)
+  end
 end
+
