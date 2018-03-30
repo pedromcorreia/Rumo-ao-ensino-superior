@@ -3,7 +3,7 @@ defmodule Raem.Idds do
   The Idds context.
   """
 
-  import Ecto.Query, warn: false
+  import Ecto.Query
   alias Raem.Repo
 
   alias Raem.Idds.Idd
@@ -114,7 +114,8 @@ defmodule Raem.Idds do
   def get_by!(params) do
     [area_enquadramento: area_enquadramento_param] = params
     area_enquadramento_param = String.upcase(area_enquadramento_param)
-    Repo.get_by!(Idd, area_enquadramento: area_enquadramento_param)
-  end
+    from(i in Idd, where: i.area_enquadramento == ^area_enquadramento_param)
+    |> Repo.all()
+    end
 end
 
