@@ -6,14 +6,11 @@ defmodule RaemWeb.DashboardController do
   alias Raem.Idds
 
   def index(conn, _params) do
-    list_courses = nil
-    #render conn, "index.html", list_courses
-    render conn, "index.html"
+    render conn, "index.html", list_courses: []
   end
 
   def create(conn, %{"id" => id}) do
     list_courses = Idds.get_by!(area_enquadramento: id)
-    #render conn, "index.html", list_courses
-    render conn, "index.html"
+    render conn, "index.html", list_courses: list_courses
   end
 end

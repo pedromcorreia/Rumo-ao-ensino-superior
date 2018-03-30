@@ -2,5 +2,30 @@
 <%= form_for @conn, dashboard_path(@conn, :create), [name: :search], fn f -> %>
   <%= text_input f, :id %>
   <%= submit "Search" %>
-<% end %>
 
+  <table class="table is-bordered">
+    <thead>
+      <tr>
+        <th>Ano</th>
+        <th>Area enquadramento</th>
+        <th>Universidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for courses <- @list_courses do %>
+        <tr>
+          <td>
+            <%= courses.ano %>
+          </td>
+          <td>
+            <%= courses.area_enquadramento %>
+          </td>
+          <td>
+            <%= courses.nome %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
