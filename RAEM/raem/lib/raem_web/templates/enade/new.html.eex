@@ -1,5 +1,0 @@
-<h2>New Enade</h2>
-
-<%= render "form.html", Map.put(assigns, :action, enade_path(@conn, :create)) %>
-
-<span><%= link "Back", to: enade_path(@conn, :index) %></span>

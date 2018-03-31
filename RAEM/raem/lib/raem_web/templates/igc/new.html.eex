@@ -1,5 +1,0 @@
-<h2>New Igc</h2>
-
-<%= render "form.html", Map.put(assigns, :action, igc_path(@conn, :create)) %>
-
-<span><%= link "Back", to: igc_path(@conn, :index) %></span>

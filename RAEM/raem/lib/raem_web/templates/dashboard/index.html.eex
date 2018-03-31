@@ -3,7 +3,7 @@
   <%= text_input f, :id %>
   <%= submit "Search" %>
 
-  <table class="table is-bordered">
+  <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Ano</th>
