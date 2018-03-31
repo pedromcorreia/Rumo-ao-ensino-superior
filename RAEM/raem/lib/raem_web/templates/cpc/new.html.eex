@@ -1,5 +1,0 @@
-<h2>New Cpc</h2>
-
-<%= render "form.html", Map.put(assigns, :action, cpc_path(@conn, :create)) %>
-
-<span><%= link "Back", to: cpc_path(@conn, :index) %></span>

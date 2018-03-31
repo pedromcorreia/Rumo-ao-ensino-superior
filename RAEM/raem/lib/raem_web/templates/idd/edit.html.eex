@@ -1,5 +1,0 @@
-<h2>Edit Idd</h2>
-
-<%= render "form.html", Map.put(assigns, :action, idd_path(@conn, :update, @idd)) %>
-
-<span><%= link "Back", to: idd_path(@conn, :index) %></span>
