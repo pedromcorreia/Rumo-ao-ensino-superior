@@ -6,22 +6,26 @@
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th>Ano</th>
-        <th>Area enquadramento</th>
         <th>Universidade</th>
+        <th>Municipio</th>
+        <th>Area enquadramento</th>
+        <th>Nota idd</th>
       </tr>
     </thead>
     <tbody>
       <%= for courses <- @list_courses do %>
         <tr>
           <td>
-            <%= courses.ano %>
+            <%= link(courses.nome, to: "dashboards/#{courses.id}") %>
+          </td>
+          <td>
+            <%= courses.municipio_curso %>
           </td>
           <td>
             <%= courses.area_enquadramento %>
           </td>
           <td>
-            <%= courses.nome %>
+            <%= Float.round(courses.nota_padronizada_idd, 2) %>
           </td>
         </tr>
       <% end %>

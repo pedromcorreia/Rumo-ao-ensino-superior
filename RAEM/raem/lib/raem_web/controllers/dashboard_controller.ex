@@ -10,7 +10,13 @@ defmodule RaemWeb.DashboardController do
   end
 
   def create(conn, %{"id" => id}) do
-    list_courses = Idds.get_by!(area_enquadramento: id)
+    area_enquadramento = String.upcase(id)
+    list_courses = Idds.list_all_by(area_enquadramento, :area_enquadramento)
     render conn, "index.html", list_courses: list_courses
+  end
+
+  def show(conn, %{"id" => id}) do
+    course = Idds.get_idd!(id)
+    render conn, "show.html", course: course
   end
 end

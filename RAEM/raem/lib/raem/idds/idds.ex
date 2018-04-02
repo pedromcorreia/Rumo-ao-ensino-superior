@@ -7,6 +7,25 @@ defmodule Raem.Idds do
   alias Raem.Repo
 
   alias Raem.Idds.Idd
+ 
+  @doc """
+  Creates a idd.
+
+  ## Examples
+
+      iex> create_idd(%{field: value})
+      {:ok, %Idd{}}
+
+      iex> create_idd(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_idd(attrs \\ %{}) do
+    %Idd{}
+    |> Idd.changeset(attrs)
+    |> Repo.insert()
+  end
+
 
   @doc """
   Returns the list of idds.
@@ -37,19 +56,15 @@ defmodule Raem.Idds do
   """
   def get_idd!(id), do: Repo.get!(Idd, id)
 
-  @doc """
-  Returns an list for idd by area_enquadramento.
-
-  ## Examples
-
-  iex> change_idd(%Idd{area_enquadramento: area_enquadramento} = idd)
-  [%Idd{}, ...]
-
-  """
-  def get_by!(params) do
-    [area_enquadramento: area_enquadramento_param] = params
-    area_enquadramento_param = String.upcase(area_enquadramento_param)
-    from(i in Idd, where: i.area_enquadramento == ^area_enquadramento_param, select: %{ano: i.ano, area_enquadramento: i.area_enquadramento, nome: i.nome_ies})
+  def list_all_by(area_enquadramento, :area_enquadramento) do
+    from(i in Idd,
+         where: i.area_enquadramento == ^area_enquadramento,
+         select: %{
+           area_enquadramento: i.area_enquadramento,
+           municipio_curso: i.municipio_curso,
+           id: i.id,
+           nota_padronizada_idd: i.nota_padronizada_idd,
+           nome: i.nome_ies})
     |> Repo.all()
     end
 end
