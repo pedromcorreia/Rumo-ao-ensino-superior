@@ -1,0 +1,33 @@
+<h2>Show Instituicao</h2>
+
+<ul>
+
+  <li>
+    <strong>Cod ies:</strong>
+    <%= @instituicao.cod_ies %>
+  </li>
+
+  <li>
+    <strong>Nome ies:</strong>
+    <%= @instituicao.nome_ies %>
+  </li>
+
+  <li>
+    <strong>Sigla ies:</strong>
+    <%= @instituicao.sigla_ies %>
+  </li>
+
+  <li>
+    <strong>Org academica:</strong>
+    <%= @instituicao.org_academica %>
+  </li>
+
+  <li>
+    <strong>Cat administratica:</strong>
+    <%= @instituicao.cat_administratica %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: instituicao_path(@conn, :edit, @instituicao) %></span>
+<span><%= link "Back", to: instituicao_path(@conn, :index) %></span>

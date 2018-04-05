@@ -1,4 +1,4 @@
-defmodule Raem.Repo.Migrations.CreateInstituicao do
+defmodule Raem.Repo.Migrations.CreateInstituicoes do
   use Ecto.Migration
 
   def change do
@@ -11,5 +11,6 @@ defmodule Raem.Repo.Migrations.CreateInstituicao do
 
       timestamps()
     end
+
   end
 end

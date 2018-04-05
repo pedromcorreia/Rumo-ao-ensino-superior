@@ -1,0 +1,73 @@
+<h2>Show Igc</h2>
+
+<ul>
+
+  <li>
+    <strong>Cod ies:</strong>
+    <%= @igc.cod_ies %>
+  </li>
+
+  <li>
+    <strong>Ano:</strong>
+    <%= @igc.ano %>
+  </li>
+
+  <li>
+    <strong>Num cursos avaliados:</strong>
+    <%= @igc.num_cursos_avaliados %>
+  </li>
+
+  <li>
+    <strong>Num cursos cpc:</strong>
+    <%= @igc.num_cursos_cpc %>
+  </li>
+
+  <li>
+    <strong>Alfa proporcao graduandos:</strong>
+    <%= @igc.alfa_proporcao_graduandos %>
+  </li>
+
+  <li>
+    <strong>Conceito graduacao:</strong>
+    <%= @igc.conceito_graduacao %>
+  </li>
+
+  <li>
+    <strong>Beta proporcao mestrandos:</strong>
+    <%= @igc.beta_proporcao_mestrandos %>
+  </li>
+
+  <li>
+    <strong>Conceito mestrado:</strong>
+    <%= @igc.conceito_mestrado %>
+  </li>
+
+  <li>
+    <strong>Gama proporcao doutorando:</strong>
+    <%= @igc.gama_proporcao_doutorando %>
+  </li>
+
+  <li>
+    <strong>Conceito doutorado:</strong>
+    <%= @igc.conceito_doutorado %>
+  </li>
+
+  <li>
+    <strong>Igc continuo:</strong>
+    <%= @igc.igc_continuo %>
+  </li>
+
+  <li>
+    <strong>Igc faixa:</strong>
+    <%= @igc.igc_faixa %>
+  </li>
+
+  <li>
+    <strong>Observacao:</strong>
+    <%= @igc.observacao %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: igc_path(@conn, :edit, @igc) %></span>
+<span><%= link "Back", to: igc_path(@conn, :index) %></span>
