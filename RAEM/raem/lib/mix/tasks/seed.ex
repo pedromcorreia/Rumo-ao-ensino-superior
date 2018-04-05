@@ -8,7 +8,7 @@ defmodule Mix.Tasks.Seed do
   use Mix.Task
   import Mix.Ecto
   alias Raem.Parser
-  alias Raem.{Idds, Igcs, Enades, Cpcs}
+  alias Raem.{Idds, Igcs, Enades, Cpcs, Instituicoes}
 
   @doc """
   Run the seed
@@ -42,12 +42,14 @@ defmodule Mix.Tasks.Seed do
     |> Enum.group_by(& &1.cod_ies)
     |> Enum.map(fn {_, instituitions} ->
       List.first(instituitions)
+      |> Instituicoes.create_instituicao
     end)
 
     file_read
     |> Enum.map(fn(row) ->
       row
       |> map_igc()
+      |> Igcs.create_igc
     end)
   end
 
@@ -74,7 +76,6 @@ defmodule Mix.Tasks.Seed do
       conceito_doutorado: Parser.read_field(map, "Conceito Médio do doutorado", :float),
       igc_continuo: Parser.read_field(map, "IGC (Contínuo)", :float),
       igc_faixa: Parser.read_field(map, "IGC (faixa)", :integer),
-      observacao: Parser.read_field(map, "Observação"),
     }
   end
 end

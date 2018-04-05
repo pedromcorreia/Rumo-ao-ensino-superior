@@ -7,7 +7,7 @@ defmodule Raem.Repo.Migrations.CreateInstituicoes do
       add :nome_ies, :string
       add :sigla_ies, :string
       add :org_academica, :string
-      add :cat_administratica, :string
+      add :cat_administrativa, :string
 
       timestamps()
     end

@@ -5,7 +5,6 @@ defmodule Raem.Repo.Migrations.CreateIgcs do
     create table(:igcs) do
       add :cod_ies, :integer
       add :ano, :string
-      add :num_cursos_avaliados, :integer
       add :num_cursos_cpc, :integer
       add :alfa_proporcao_graduandos, :float
       add :conceito_graduacao, :float
@@ -15,7 +14,6 @@ defmodule Raem.Repo.Migrations.CreateIgcs do
       add :conceito_doutorado, :float
       add :igc_continuo, :float
       add :igc_faixa, :integer
-      add :observacao, :string
 
       timestamps()
     end

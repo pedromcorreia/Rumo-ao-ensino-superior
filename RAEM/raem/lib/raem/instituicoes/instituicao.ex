@@ -5,7 +5,7 @@ defmodule Raem.Instituicoes.Instituicao do
 
 
   schema "instituicoes" do
-    field :cat_administratica, :string
+    field :cat_administrativa, :string
     field :cod_ies, :integer
     field :nome_ies, :string
     field :org_academica, :string
@@ -17,7 +17,7 @@ defmodule Raem.Instituicoes.Instituicao do
   @doc false
   def changeset(%Instituicao{} = instituicao, attrs) do
     instituicao
-    |> cast(attrs, [:cod_ies, :nome_ies, :sigla_ies, :org_academica, :cat_administratica])
-    |> validate_required([:cod_ies, :nome_ies, :sigla_ies, :org_academica, :cat_administratica])
+    |> cast(attrs, [:cod_ies, :nome_ies, :sigla_ies, :org_academica, :cat_administrativa])
+    |> validate_required([:cod_ies, :nome_ies, :sigla_ies, :org_academica, :cat_administrativa])
   end
 end

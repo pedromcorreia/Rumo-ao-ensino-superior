@@ -15,9 +15,7 @@ defmodule Raem.Igcs.Igc do
     field :gama_proporcao_doutorando, :float
     field :igc_continuo, :float
     field :igc_faixa, :integer
-    field :num_cursos_avaliados, :integer
     field :num_cursos_cpc, :integer
-    field :observacao, :string
 
     timestamps()
   end
@@ -25,7 +23,7 @@ defmodule Raem.Igcs.Igc do
   @doc false
   def changeset(%Igc{} = igc, attrs) do
     igc
-    |> cast(attrs, [:cod_ies, :ano, :num_cursos_avaliados, :num_cursos_cpc, :alfa_proporcao_graduandos, :conceito_graduacao, :beta_proporcao_mestrandos, :conceito_mestrado, :gama_proporcao_doutorando, :conceito_doutorado, :igc_continuo, :igc_faixa, :observacao])
-    |> validate_required([:cod_ies, :ano, :num_cursos_avaliados, :num_cursos_cpc, :alfa_proporcao_graduandos, :conceito_graduacao, :beta_proporcao_mestrandos, :conceito_mestrado, :gama_proporcao_doutorando, :conceito_doutorado, :igc_continuo, :igc_faixa, :observacao])
+    |> cast(attrs, [:cod_ies, :ano, :num_cursos_cpc, :alfa_proporcao_graduandos, :conceito_graduacao, :beta_proporcao_mestrandos, :conceito_mestrado, :gama_proporcao_doutorando, :conceito_doutorado, :igc_continuo, :igc_faixa])
+    |> validate_required([:cod_ies, :ano, :num_cursos_cpc, :alfa_proporcao_graduandos, :conceito_graduacao, :beta_proporcao_mestrandos, :conceito_mestrado, :gama_proporcao_doutorando, :conceito_doutorado, :igc_continuo, :igc_faixa])
   end
 end
