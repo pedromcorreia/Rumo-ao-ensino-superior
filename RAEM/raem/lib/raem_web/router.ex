@@ -22,6 +22,7 @@ defmodule RaemWeb.Router do
     resources "/idds", IddController, except: [:delete, :new, :update]
     resources "/enades", EnadeController, except: [:delete, :new, :update]
     resources "/cpcs", CpcController, except: [:delete, :new, :update]
-    resources "/igcs", IgcController, except: [:delete, :new, :update]
+    resources "/instituicoes", InstituicoesController
+    resources "/igcs", IgcController
   end
 end
