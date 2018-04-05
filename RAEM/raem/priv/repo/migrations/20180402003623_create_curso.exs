@@ -14,6 +14,9 @@ defmodule Raem.Repo.Migrations.CreateCurso do
       add :nota_bruta_idd, :float
       add :nota_padronizada_idd, :float
       add :idd_faixa, :integer
+      add :cod_municipio, :integer
+      add :municipio_curso, :string
+      add :sigla_uf, :string
 
       timestamps()
     end

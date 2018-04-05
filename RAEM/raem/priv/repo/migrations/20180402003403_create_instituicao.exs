@@ -8,9 +8,6 @@ defmodule Raem.Repo.Migrations.CreateInstituicao do
       add :sigla_ies, :string
       add :org_academica, :string
       add :cat_administratica, :string
-      add :cod_municipio, :integer
-      add :municipio_curso, :string
-      add :sigla_uf, :string
 
       timestamps()
     end
