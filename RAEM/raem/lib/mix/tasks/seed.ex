@@ -26,9 +26,9 @@ defmodule Mix.Tasks.Seed do
 
     default_dir_name = "resources/"
 
-    # create_instutions(default_dir_name <> "csv/igc_2016.csv")
-    #create_igc(default_dir_name <> "csv/igc_2016.csv")
-    #create_courses(default_dir_name <> "csv/cpc_2016.csv")
+    create_instutions(default_dir_name <> "csv/igc_2016.csv")
+    create_igc(default_dir_name <> "csv/igc_2016.csv")
+    create_courses(default_dir_name <> "csv/cpc_2016.csv")
     create_cpc(default_dir_name <> "csv/cpc_2016.csv")
   end
 
