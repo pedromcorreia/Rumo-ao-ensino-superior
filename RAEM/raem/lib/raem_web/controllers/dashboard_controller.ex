@@ -3,7 +3,7 @@ defmodule RaemWeb.DashboardController do
 
   alias Raem.Dashboards
   alias Raem.Dashboards.Dashboard
-  alias Raem.Idds
+  alias Raem.Cursos
 
   def index(conn, _params) do
     render conn, "index.html", list_courses: []
@@ -11,12 +11,13 @@ defmodule RaemWeb.DashboardController do
 
   def create(conn, %{"id" => id}) do
     area_enquadramento = String.upcase(id)
-    list_courses = Idds.list_all_by(area_enquadramento, :area_enquadramento)
+    list_courses = Cursos.list_all_by(area_enquadramento, :area_enquadramento)
     render conn, "index.html", list_courses: list_courses
   end
 
   def show(conn, %{"id" => id}) do
-    course = Idds.get_idd!(id)
+    course = Cursos.get_curso_by_id(id)
+    IO.inspect course
     render conn, "show.html", course: course
   end
 end

@@ -16,7 +16,13 @@
         <%= @course.area_enquadramento %>
       </td>
       <td>
-        <%= Float.round(@course.nota_padronizada_idd, 2) %>
+        <%= @course.modalidade_ensino %>
+      </td>
+      <td>
+        <%= @course.municipio_curso %>
+      </td>
+      <td>
+        <%= @course.sigla_uf %>
       </td>
     </tr>
   </tbody>

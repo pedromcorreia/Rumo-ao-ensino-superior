@@ -8,24 +8,28 @@
       <tr>
         <th>Universidade</th>
         <th>Municipio</th>
+        <th>UF</th>
         <th>Area enquadramento</th>
-        <th>Nota idd</th>
+        <th>Modalidade de ensino</th>
       </tr>
     </thead>
     <tbody>
       <%= for courses <- @list_courses do %>
         <tr>
           <td>
-            <%= link(courses.nome, to: "dashboards/#{courses.id}") %>
+            <%= link(courses.sigla_ies, to: "dashboards/#{courses.id}") %>
           </td>
           <td>
             <%= courses.municipio_curso %>
           </td>
           <td>
+            <%= courses.sigla_uf %>
+          </td>
+          <td>
             <%= courses.area_enquadramento %>
           </td>
           <td>
-            <%= Float.round(courses.nota_padronizada_idd, 2) %>
+            <%= courses.modalidade_ensino %>
           </td>
         </tr>
       <% end %>
