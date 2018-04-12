@@ -56,6 +56,9 @@ defmodule Raem.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "seed"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "drop": ["ecto.drop"],
+      "setup": ["ecto.create", "ecto.migrate", "seed"],
+      "reset": ["drop", "setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end

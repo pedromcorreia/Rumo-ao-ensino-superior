@@ -3,19 +3,7 @@ defmodule Raem.Repo.Migrations.CreateCpcs do
 
   def change do
     create table(:cpcs) do
-      add :ano, :date
-      add :cod_area, :integer
-      add :area_enquadramento, :string
-      add :cod_ies, :integer
-      add :nome_ies, :string
-      add :sigla_ies, :string
-      add :cat_administrativa, :string
-      add :org_academica, :string
-      add :cod_municipio, :integer
-      add :mun_curso, :string
-      add :uf_curso, :string
-      add :regiao_curso, :string
-      add :num_cursos_unidade, :integer
+      add :ano, :string
       add :concluintes_inscritos, :integer
       add :concluintes_participantes, :integer
       add :nota_bruta_fg, :float
@@ -41,7 +29,6 @@ defmodule Raem.Repo.Migrations.CreateCpcs do
       add :nota_padronizada_regime_trabalho, :float
       add :cpc_continuo, :float
       add :cpc_faixa, :integer
-      add :observacao, :string
 
       timestamps()
     end
