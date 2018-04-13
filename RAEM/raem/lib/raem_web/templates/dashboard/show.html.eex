@@ -1,28 +1,93 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Universidade</th>
-      <th>Municipio</th>
+      <th>Instituição</th>
+      <th>Sigla</th>
+      <th>Modalidade de ensino</th>
       <th>Area enquadramento</th>
-      <th>Nota idd</th>
+      <th>Municipio</th>
+      <th>UF</th>
+      <th>
+  Alfa Proporcao Graduandos
+      </th>
+      <th>
+        Ano
+      </th>
+      <th>
+        Beta Proporcao Mestrandos
+      </th>
+      <th>
+        Conceito Mestrado
+      </th>
+      <th>
+        Conceito Graduacao
+      </th>
+      <th>
+        Conceito Doutorado
+      </th>
+      <th>
+        Gama Proporcao Doutorando
+      </th>
+      <th>
+        Igc Continuo
+      </th>
+      <th>
+        Igc Faixa
+      </th>
+      <th>
+        Numero Cursos Cpc
+      </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>
-        <%= @course.municipio_curso %>
+        <%= @course.nome_ies %>
       </td>
       <td>
-        <%= @course.area_enquadramento %>
+        <%= @course.sigla_ies %>
       </td>
       <td>
         <%= @course.modalidade_ensino %>
+      </td>
+      <td>
+        <%= @course.area_enquadramento %>
       </td>
       <td>
         <%= @course.municipio_curso %>
       </td>
       <td>
         <%= @course.sigla_uf %>
+      </td>
+      <td>
+        <%= @course.alfa_proporcao_graduandos %>
+      </td>
+      <td>
+        <%= @course.ano %>
+      </td>
+      <td>
+        <%= @course.beta_proporcao_mestrandos %>
+      </td>
+      <td>
+        <%= @course.conceito_mestrado %>
+      </td>
+      <td>
+        <%= @course.conceito_graduacao %>
+      </td>
+      <td>
+        <%= @course.conceito_doutorado %>
+      </td>
+      <td>
+        <%= @course.gama_proporcao_doutorando %>
+      </td>
+      <td>
+        <%= @course.igc_continuo %>
+      </td>
+      <td>
+        <%= @course.igc_faixa %>
+      </td>
+      <td>
+        <%= @course.num_cursos_cpc %>
       </td>
     </tr>
   </tbody>

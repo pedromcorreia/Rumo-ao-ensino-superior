@@ -5,8 +5,8 @@ defmodule Raem.Users.User do
 
 
   schema "users" do
-    field :due, :naive_datetime
-    field :title, :string
+    field :name, :string
+    field :email, :string
 
     timestamps()
   end
@@ -14,7 +14,7 @@ defmodule Raem.Users.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:title, :due])
-    |> validate_required([:title, :due])
+    |> cast(attrs, [:name, :email])
+    |> validate_required([:name, :email])
   end
 end

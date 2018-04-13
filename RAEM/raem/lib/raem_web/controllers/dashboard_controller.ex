@@ -17,7 +17,6 @@ defmodule RaemWeb.DashboardController do
 
   def show(conn, %{"id" => id}) do
     course = Cursos.get_curso_by_id(id)
-    IO.inspect course
     render conn, "show.html", course: course
   end
 end

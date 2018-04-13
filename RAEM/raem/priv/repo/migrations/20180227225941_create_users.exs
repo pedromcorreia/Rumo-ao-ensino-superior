@@ -3,8 +3,8 @@ defmodule Raem.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :title, :string
-      add :due, :naive_datetime
+      add :name, :string
+      add :email, :string
 
       timestamps()
     end
