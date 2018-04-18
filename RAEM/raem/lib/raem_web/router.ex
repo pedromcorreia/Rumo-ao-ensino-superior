@@ -24,5 +24,6 @@ defmodule RaemWeb.Router do
     resources "/cpcs", CpcController, except: [:delete, :new, :update]
     resources "/instituicoes", InstituicoesController
     resources "/igcs", IgcController
+    resources "/settings", SettingController
   end
 end

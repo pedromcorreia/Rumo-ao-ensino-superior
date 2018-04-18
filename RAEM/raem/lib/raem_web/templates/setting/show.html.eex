@@ -1,0 +1,23 @@
+<h2>Show Setting</h2>
+
+<ul>
+
+  <li>
+    <strong>Field:</strong>
+    <%= @setting.field %>
+  </li>
+
+  <li>
+    <strong>From:</strong>
+    <%= @setting.from %>
+  </li>
+
+  <li>
+    <strong>To:</strong>
+    <%= @setting.to %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: setting_path(@conn, :edit, @setting) %></span>
+<span><%= link "Back", to: setting_path(@conn, :index) %></span>
