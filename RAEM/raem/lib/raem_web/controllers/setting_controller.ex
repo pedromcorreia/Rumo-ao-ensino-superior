@@ -3,10 +3,32 @@ defmodule RaemWeb.SettingController do
 
   alias Raem.FieldMappings
   alias Raem.FieldMappings.Setting
+  alias Raem.Igcs.Igc
+  alias Raem.Instituicoes.Instituicao
+  alias Raem.Cursos.Curso
+  alias Raem.Cpcs.Cpc
 
   def index(conn, _params) do
     settings = FieldMappings.list_settings()
-    render(conn, "index.html", settings: settings)
+
+    field_mappings = get_field_mappings()
+    render(conn, "index.html", settings: settings, field_mappings: field_mappings)
+  end
+
+  defp get_field_mappings() do
+    instituition = %{instituition: remove_keys(%Instituicao{})}
+    igc = %{igc: remove_keys(%Igc{})}
+    course = %{course: remove_keys(%Curso{})}
+    cpc = %{cpc: remove_keys(%Cpc{})}
+    {instituition, igc, course, cpc}
+  end
+  defp remove_keys(map) do
+    map
+    |> Map.keys()
+    |> List.delete(:__meta__)
+    |> List.delete(:__struct__)
+    |> List.delete(:inserted_at)
+    |> List.delete(:updated_at)
   end
 
   def new(conn, _params) do
