@@ -9,19 +9,23 @@ defmodule RaemWeb.SettingController do
   alias Raem.Cpcs.Cpc
 
   def index(conn, _params) do
-    settings = FieldMappings.list_settings()
+    list_settings = FieldMappings.list_settings()
 
-    field_mappings = get_field_mappings()
-    render(conn, "index.html", settings: settings, field_mappings: field_mappings)
+    setting = remove_keys(%Setting{})
+    instituition = remove_keys(%Instituicao{})
+    igc = remove_keys(%Igc{})
+    course = remove_keys(%Curso{})
+    cpc = remove_keys(%Cpc{})
+
+    render(conn, "index.html",
+           setting: setting,
+           list_settings: list_settings,
+           instituition: instituition,
+           igc: igc,
+           course: course,
+           cpc: cpc)
   end
 
-  defp get_field_mappings() do
-    instituition = %{instituition: remove_keys(%Instituicao{})}
-    igc = %{igc: remove_keys(%Igc{})}
-    course = %{course: remove_keys(%Curso{})}
-    cpc = %{cpc: remove_keys(%Cpc{})}
-    {instituition, igc, course, cpc}
-  end
   defp remove_keys(map) do
     map
     |> Map.keys()
