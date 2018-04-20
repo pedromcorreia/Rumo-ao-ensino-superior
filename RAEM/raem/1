@@ -17,7 +17,7 @@ defmodule RaemWeb.SettingController do
     cpc = remove_keys(%Cpc{})
 
     render(conn, "index.html",
-           list_settings: list_settings,
+             list_settings: list_settings,
            instituition: instituition,
            igc: igc,
            course: course,

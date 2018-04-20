@@ -1,106 +1,75 @@
 <h2>Listing Settings</h2>
 <div>
-  <label>
-    <h2>Instituitions</h2>
-  </label>
-
-  <%= for instituition_field <- @instituition do %>
+  <div class="col-md-12">
     <div class="col-md-12">
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">From</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><%= instituition_field %></span>
-        </div>
-      </div>
+      <h2>Instituitions</h2>
     </div>
-  <% end %>
-
-  <label>
-    <h2>Igc</h2>
-  </label>
-
-  <%= for igc_field <- @igc do %>
     <div class="col-md-12">
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><%= igc_field %></span>
-        </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="col-md-4">
-        <div class="input-group-prepend">
+      <%= for field <- @instituition do %>
+        <div class="col-md-6">
           <span class="input-group-text" id="basic-addon1">From</span>
+          <input type="text" class="form-control">
         </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">To</span>
+        <div class="col-md-6">
+          <span class="span-group-text">To</span>
+          <input type="text" class="form-control" value="#{field}" disabled>
         </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 
-  <label>
-    <h2>Course</h2>
-  </label>
-
-  <%= for course_field <- @course do %>
+  <div class="col-md-12">
     <div class="col-md-12">
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><%= course_field %></span>
-        </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">From</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">To</span>
-        </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
+      <h2>Igc</h2>
     </div>
-  <% end %>
-
-  <label>
-    <h2>Cpc</h2>
-  </label>
-
-  <%= for cpc_field <- @cpc do %>
     <div class="col-md-12">
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><%= cpc_field %></span>
-        </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="col-md-4">
-        <div class="input-group-prepend">
+      <%= for field <- @igc do %>
+        <div class="col-md-6">
           <span class="input-group-text" id="basic-addon1">From</span>
+          <input type="text" class="form-control">
         </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="col-md-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">To</span>
+        <div class="col-md-6">
+          <span class="span-group-text">To</span>
+          <input type="text" class="form-control" value="#{field}" disabled>
         </div>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <h2>Course</h2>
+    </div>
+    <div class="col-md-12">
+      <%= for field <- @course do %>
+        <div class="col-md-6">
+          <span class="input-group-text" id="basic-addon1">From</span>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <span class="span-group-text">To</span>
+          <input type="text" class="form-control" value="#{field}" disabled>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <h2>Cpc</h2>
+    </div>
+    <div class="col-md-12">
+      <%= for field <- @cpc do %>
+        <div class="col-md-6">
+          <span class="input-group-text" id="basic-addon1">From</span>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <span class="span-group-text">To</span>
+          <input type="text" class="form-control" value="#{field}" disabled>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
