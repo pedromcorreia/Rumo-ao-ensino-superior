@@ -15834,5 +15834,5 @@ window.bootstrap = require("bootstrap");
 
 });})();require('___globals___');
 
-require('web/static/js/app');
+require('js/app');
 //# sourceMappingURL=app.js.map
