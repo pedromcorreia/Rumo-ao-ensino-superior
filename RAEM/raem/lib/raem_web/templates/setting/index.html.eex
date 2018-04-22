@@ -2,70 +2,21 @@
 <div>
   <div class="col-md-12">
     <div class="col-md-12">
-      <h2>Instituitions</h2>
+      <h2>Fields</h2>
+    </div>
+    <div class="col-md-3">
+      <span class="input-group-text" id="basic-addon1">Year</span>
+      <input type="text" class="form-control">
     </div>
     <div class="col-md-12">
-      <%= for field <- @instituition do %>
-        <div class="col-md-6">
+      <%= for field <- @fiels do %>
+        <div class="col-md-3">
           <span class="input-group-text" id="basic-addon1">From</span>
           <input type="text" class="form-control">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
           <span class="span-group-text">To</span>
-          <input type="text" class="form-control" value="#{field}" disabled>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="col-md-12">
-    <div class="col-md-12">
-      <h2>Igc</h2>
-    </div>
-    <div class="col-md-12">
-      <%= for field <- @igc do %>
-        <div class="col-md-6">
-          <span class="input-group-text" id="basic-addon1">From</span>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <span class="span-group-text">To</span>
-          <input type="text" class="form-control" value="#{field}" disabled>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-md-12">
-    <div class="col-md-12">
-      <h2>Course</h2>
-    </div>
-    <div class="col-md-12">
-      <%= for field <- @course do %>
-        <div class="col-md-6">
-          <span class="input-group-text" id="basic-addon1">From</span>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <span class="span-group-text">To</span>
-          <input type="text" class="form-control" value="#{field}" disabled>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="col-md-12">
-    <div class="col-md-12">
-      <h2>Cpc</h2>
-    </div>
-    <div class="col-md-12">
-      <%= for field <- @cpc do %>
-        <div class="col-md-6">
-          <span class="input-group-text" id="basic-addon1">From</span>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <span class="span-group-text">To</span>
-          <input type="text" class="form-control" value="#{field}" disabled>
+          <input type="text" class="form-control" value="<%= field %>" disabled>
         </div>
       <% end %>
     </div>

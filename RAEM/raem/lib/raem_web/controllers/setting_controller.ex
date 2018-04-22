@@ -10,18 +10,17 @@ defmodule RaemWeb.SettingController do
 
   def index(conn, _params) do
     list_settings = FieldMappings.list_settings()
-
-    instituition = remove_keys(%Instituicao{})
-    igc = remove_keys(%Igc{})
-    course = remove_keys(%Curso{})
-    cpc = remove_keys(%Cpc{})
-
     render(conn, "index.html",
            list_settings: list_settings,
-           instituition: instituition,
-           igc: igc,
-           course: course,
-           cpc: cpc)
+           fiels: get_list_fields())
+  end
+
+  defp get_list_fields() do
+    [remove_keys(%Instituicao{}),
+     remove_keys(%Igc{}),
+     remove_keys(%Curso{}),
+     remove_keys(%Cpc{})]
+    |> Enum.concat
   end
 
   defp remove_keys(map) do
