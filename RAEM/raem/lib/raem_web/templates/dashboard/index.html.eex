@@ -1,4 +1,5 @@
-<h2>Procure seu curso</h2>
+<div class="ccc">
+  <h2>Procure seu curso</h2>
 <%= form_for @conn, dashboard_path(@conn, :create), [name: :search], fn f -> %>
   <%= text_input f, :id %>
   <%= submit "Search" %>
@@ -37,3 +38,4 @@
   </table>
 
 <% end %>
+</div>

@@ -6,37 +6,51 @@ exports.config = {
     stylesheets: {
       joinTo: "css/app.css",
       order: {
-        after: ["/css/app.scss"]
-      },
+        after: ["priv/static/css/app.scss"]
+      }
+    },
     templates: {
       joinTo: "js/app.js"
     }
   },
 
   conventions: {
-   assets: /^(static)/
+    assets: /^(static)/
   },
 
   paths: {
     watched: ["static", "css", "js", "vendor"],
-    public: "..priv/static"
+    public: "../priv/static"
   },
 
   plugins: {
     babel: {
-      ignore: [/web\/static\/vendor/]
+      ignore: [/(web\/static\/vendor)|node_modules/]
     },
     sass: {
       options: {
-        includePaths: ["node_modules/bootstrap/scss", "node_modules/font-awesome/scss"], // Tell sass-brunch where to look for files to @import
-        precision: 8 // Minimum precision required by bootstrap-sass
-      }
+        includePaths: [
+          "node_modules/bootstrap-sass/assets/stylesheets",
+          "node_modules/font-awesome/scss",
+          "node_modules/toastr"
+        ],
+      },
+      precision: 8
+    },
+    copycat: {
+      "fonts": [
+        "node_modules/bootstrap-sass/assets/fonts/bootstrap",
+        "node_modules/font-awesome/fonts"
+      ] 
     }
   },
 
   modules: {
     autoRequire: {
-      "js/app.js": ["js/app"]
+      "js/app.js": [
+        "web/static/js/app",
+        "web/static/js/theme-app"
+      ]
     }
   },
 
@@ -44,8 +58,11 @@ exports.config = {
     enabled: true,
     globals: {
       $: 'jquery',
-      jQuery: 'jquery',
-      bootstrap: 'bootstrap' // Require Bootstrap's JavaScript globally
+      jQuery: 'jquery'
+    },
+    styles: {
+      "bootstrap-table": ["dist/bootstrap-table.css"],
+      "jquery-ui": ["themes/base/all.css"]
     }
   }
-};
+}
