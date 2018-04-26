@@ -13,11 +13,17 @@ defmodule RaemWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :login_plug do
+    plug(RaemWeb.LoginPlug)
+  end
+
   scope "/", RaemWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :login_plug] # Use the default browser stack
+
 
     get "/", PageController, :index
     resources "/users", UserController
+    resources("/sessions", SessionController, only: [:new, :create])
     resources "/dashboards", DashboardController
     resources "/idds", IddController, except: [:delete, :new, :update]
     resources "/enades", EnadeController, except: [:delete, :new, :update]

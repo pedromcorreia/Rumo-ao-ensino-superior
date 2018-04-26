@@ -13,8 +13,8 @@ defmodule Raem.Users do
 
   ## Examples
 
-      iex> list_users()
-      [%User{}, ...]
+  iex> list_users()
+  [%User{}, ...]
 
   """
   def list_users do
@@ -28,11 +28,11 @@ defmodule Raem.Users do
 
   ## Examples
 
-      iex> get_user!(123)
-      %User{}
+  iex> get_user!(123)
+  %User{}
 
-      iex> get_user!(456)
-      ** (Ecto.NoResultsError)
+  iex> get_user!(456)
+  ** (Ecto.NoResultsError)
 
   """
   def get_user!(id), do: Repo.get!(User, id)
@@ -42,11 +42,11 @@ defmodule Raem.Users do
 
   ## Examples
 
-      iex> create_user(%{field: value})
-      {:ok, %User{}}
+  iex> create_user(%{field: value})
+  {:ok, %User{}}
 
-      iex> create_user(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
+  iex> create_user(%{field: bad_value})
+  {:error, %Ecto.Changeset{}}
 
   """
   def create_user(attrs \\ %{}) do
@@ -60,11 +60,11 @@ defmodule Raem.Users do
 
   ## Examples
 
-      iex> update_user(user, %{field: new_value})
-      {:ok, %User{}}
+  iex> update_user(user, %{field: new_value})
+  {:ok, %User{}}
 
-      iex> update_user(user, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
+  iex> update_user(user, %{field: bad_value})
+  {:error, %Ecto.Changeset{}}
 
   """
   def update_user(%User{} = user, attrs) do
@@ -78,11 +78,11 @@ defmodule Raem.Users do
 
   ## Examples
 
-      iex> delete_user(user)
-      {:ok, %User{}}
+  iex> delete_user(user)
+  {:ok, %User{}}
 
-      iex> delete_user(user)
-      {:error, %Ecto.Changeset{}}
+  iex> delete_user(user)
+  {:error, %Ecto.Changeset{}}
 
   """
   def delete_user(%User{} = user) do
@@ -94,11 +94,49 @@ defmodule Raem.Users do
 
   ## Examples
 
-      iex> change_user(user)
-      %Ecto.Changeset{source: %User{}}
+  iex> change_user(user)
+  %Ecto.Changeset{source: %User{}}
 
   """
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  alias Comeonin.Bcrypt
+  alias Ecto.Changeset
+  alias Raem.User.Session
+
+  @doc """
+  Authenticates an user.
+  ## Examples
+  #      iex> create_session(org_or_context, email, password)
+  #            {:ok, %User{}}
+  #                  iex> create_session(org_or_context, email, password)
+  #                        {:error, %Ecto.Changeset{}}
+  """
+
+  def create_session(attrs) do
+    case %{Session.changeset(%Session{}, attrs) | action: :insert} do
+      %Changeset{valid?: true, changes: %{email: email, password: pass}} = cs ->
+        user = get_user_by_email(email)
+
+        cond do
+          user && Bcrypt.checkpw(pass, user.password_hash) ->
+            {:ok, user}
+
+          user ->
+            {:error, Changeset.add_error(cs, :password, "is invalid")}
+          true ->
+            Bcrypt.dummy_checkpw()
+            {:error, Changeset.add_error(cs, :email, "not found")}
+        end
+
+      cs ->
+        {:error, cs}
+    end
+  end
+
+  def change_session(%Session{} = session), do: Session.changeset(session, %{})
+
+  def get_user_by_email(email), do: Repo.get_by(User, [email: email])
 end
