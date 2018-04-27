@@ -104,7 +104,7 @@ defmodule Raem.Users do
 
   alias Comeonin.Bcrypt
   alias Ecto.Changeset
-  alias Raem.User.Session
+  alias Raem.Users.Session
 
   @doc """
   Authenticates an user.

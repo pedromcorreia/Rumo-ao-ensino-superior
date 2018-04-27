@@ -2,7 +2,9 @@ defmodule RaemWeb.SessionController do
   use RaemWeb, :controller
 
   alias Raem.User
-  alias Raem.Users.Session
+  alias Raem.Users.{Session, User}
+  alias Phoenix.Socket
+  alias Plug.Conn
 
   def new(conn, _params) do
     changeset = User.change_session(%Session{})
@@ -26,5 +28,16 @@ defmodule RaemWeb.SessionController do
     conn
     |> clear_session()
     |> redirect(to: session_path(conn, :new))
+  end
+
+  def login_user(%Conn{} = conn, %User{} = user) do
+    conn
+    |> Conn.put_session(:current_user_id, user.id)
+    |> Conn.assign(:current_user, user)
+  end
+
+  def login_user(%Socket{} = socket, %User{} = user) do
+    socket
+    |> Socket.assign(:current_user, user)
   end
 end
