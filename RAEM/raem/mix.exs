@@ -42,7 +42,8 @@ defmodule Raem.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:csv, "~> 2.0.0"},
-      {:nimble_csv, "~> 0.3"}
+      {:nimble_csv, "~> 0.3"},
+      {:bcrypt_elixir, "~> 1.0"}
     ]
   end
 
